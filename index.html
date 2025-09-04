@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vidovi's Boat Fare Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 420px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 2px solid #444;
+      border-radius: 10px;
+      background-color: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #0055a5;
+    }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      font-size: 1.1em;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 24px;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: center;
+    }
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Vidovi's Boat Fare Calculator</h1>
+
+  <label for="adults">Number of adults (age 19+):</label>
+  <input type="number" id="adults" min="0" value="0" />
+
+  <label for="teens">Number of teens (age 12–18):</label>
+  <input type="number" id="teens" min="0" value="0" />
+
+  <label for="kids">Number of kids (under 12):</label>
+  <input type="number" id="kids" min="0" value="0" />
+
+  <button onclick="calculateFare()">Calculate Total Fare</button>
+
+  <div id="result"></div>
+
+  <div class="footer">
+    &copy; 2025 Vidovi's Travel Tools
+  </div>
+
+  <script>
+    function calculateFare() {
+      const adults = Number(document.getElementById('adults').value);
+      const teens = Number(document.getElementById('teens').value);
+      const kids = Number(document.getElementById('kids').value);
+
+      if (adults < 0 || teens < 0 || kids < 0) {
+        document.getElementById('result').textContent = 'Please enter non-negative numbers only.';
+        return;
+      }
+
+      const totalFare = adults * 20 + teens * 10;
+
+      document.getElementById('result').textContent = 
+        `Total Fare: $${totalFare.toFixed(2)}`;
+    }
+  </script>
+
+</body>
+</html>
+
